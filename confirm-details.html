@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Confirm your account details on the accessible voting platform.">
+  <title>Confirm Your Details - Accessible Voting Platform</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header with Navigation -->
+  <header role="banner">
+    <nav aria-label="Main navigation" class="navbar">
+      <a href="index.html" class="logo">Voting Platform</a>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Confirmation Section -->
+  <main role="main" class="confirmation-main">
+    <section class="confirmation-section">
+      <h1>Confirm Your Details</h1>
+      <p class="confirmation-description">Please review your account details below and confirm that they are correct.</p>
+      
+      <!-- User Details Summary -->
+      <div class="user-details">
+        <p><strong>Username:</strong> <span id="username">JohnDoe123</span></p>
+        <p><strong>Email:</strong> <span id="email">johndoe@example.com</span></p>
+        <p><strong>Registered On:</strong> <span id="registered-date">2024-11-12</span></p>
+      </div>
+
+      <!-- Confirmation Button -->
+      <form action="vote.html" method="post">
+        <button type="submit" class="button confirm-button">Confirm Details</button>
+      </form>
+
+      <!-- Edit Details Link -->
+      <div class="edit-link">
+        <p>If any details are incorrect, please <a href="edit-profile.html">edit your profile</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript for Accessibility Features -->
+  <script src="js/accessibility.js"></script>
+</body>
+</html>

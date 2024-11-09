@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible voting platform for people with disabilities.">
+  <title>Accessible Voting Platform - Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header with Navigation -->
+  <header role="banner">
+    <nav aria-label="Main navigation" class="navbar">
+      <a href="index.html" aria-current="page" class="logo">Voting Platform</a>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="vote.html">Vote</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Accessibility Toolbar -->
+  <div role="region" aria-label="Accessibility options" class="accessibility-toolbar">
+    <button aria-label="Increase font size" onclick="adjustFontSize(1)">A+</button>
+    <button aria-label="Decrease font size" onclick="adjustFontSize(-1)">A-</button>
+    <button aria-label="Toggle high contrast" onclick="toggleContrast()">Toggle Contrast</button>
+  </div>
+
+  <!-- Welcome Message -->
+  <main role="main">
+    <section class="welcome-section">
+      <h1>Welcome to the Accessible Voting Platform</h1>
+      <p>Ensuring a seamless voting experience for everyone, including people with disabilities.</p>
+    </section>
+
+    <!-- How It Works Section -->
+    <section aria-labelledby="how-it-works" class="how-it-works">
+      <h2 id="how-it-works">How It Works</h2>
+      <ul>
+        <li><span class="step-number">1</span> Register as a new user.</li>
+        <li><span class="step-number">2</span> Log in to access the platform.</li>
+        <li><span class="step-number">3</span> Select your candidate.</li>
+        <li><span class="step-number">4</span> Confirm and submit your vote.</li>
+      </ul>
+    </section>
+
+    <!-- Get Started Button -->
+    <section>
+      <a href="register.html" class="button" role="button" aria-label="Get started with registration">Get Started</a>
+    </section>
+
+    <!-- Assistance Section -->
+    <section aria-labelledby="assistance" class="assistance-section">
+      <h2 id="assistance">Need Assistance?</h2>
+      <p>If you need help with accessibility features, please visit our <a href="help.html">Help</a> page or contact support.</p>
+    </section>
+  </main>
+
+  <!-- JavaScript for Accessibility Features and API Interactions -->
+  <script src="js/accessibility.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
+
+

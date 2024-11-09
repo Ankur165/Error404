@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for the accessible voting platform and start your secure voting experience.">
+  <title>Register - Accessible Voting Platform</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header with Navigation -->
+  <header role="banner">
+    <nav aria-label="Main navigation" class="navbar">
+      <a href="index.html" aria-current="page" class="logo">Voting Platform</a>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html" aria-current="page">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Registration Form Section -->
+  <main role="main" class="register-main">
+    <section class="register-section">
+      <h1>Create Your Account</h1>
+      <p class="register-description">Sign up to participate in secure, accessible voting.</p>
+      
+      <!-- Registration Form -->
+      <form class="register-form" aria-label="Registration form">
+        
+        <!-- Username Field -->
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required placeholder="Choose a username" aria-required="true" aria-describedby="usernameDesc">
+        <span id="usernameDesc" class="input-description">Choose a unique username for this platform</span>
+
+        <!-- Email Field -->
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email" aria-required="true" aria-describedby="emailDesc">
+        <span id="emailDesc" class="input-description">Enter a valid email address</span>
+
+        <!-- Password Field -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Create a password" aria-required="true" aria-describedby="passwordDesc">
+        <span id="passwordDesc" class="input-description">Password should be at least 8 characters long</span>
+
+        <!-- Confirm Password Field -->
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password" aria-required="true" aria-describedby="confirmPasswordDesc">
+        <span id="confirmPasswordDesc" class="input-description">Re-enter your password for verification</span>
+
+        <!-- Register Button -->
+        <button type="submit" class="button register-button">Register</button>
+      </form>
+
+      <!-- Example Button to Directly Call the Function -->
+      <button onclick="registerUser('testUser', 'test@example.com', 'password123')" class="button">Register (Pre-Filled)</button>
+
+      <!-- Support Links -->
+      <div class="support-links">
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript for Accessibility and API Interactions -->
+  <script src="js/accessibility.js"></script>
+  <script>
+    // Define the registerUser function that can be called directly or through the form
+    async function registerUser(username, email, password, confirmPassword = password) {
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:5002/api/users/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          localStorage.setItem('token', data.token); // Store token if necessary
+          alert("Registration successful!");
+          window.location.href = 'confirm-details.html';
+        } else {
+          alert("Registration failed: " + data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again later.");
+      }
+    }
+
+    // Attach an event listener to the form to handle regular user registration
+    document.querySelector('.register-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form's default submission
+
+      // Retrieve values from the form fields
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      // Call the registerUser function with form values
+      registerUser(username, email, password, confirmPassword);
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
